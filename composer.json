@@ -1,0 +1,27 @@
+{
+    "name": "onlineconf/onlineconf-php",
+    "description": "Onlineconf client library for php",
+    "minimum-stability": "stable",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Alexander Kubintsev",
+            "email": "kubintsev.ru@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Onlineconf\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "ext-dba": "*",
+        "psr/log": "^1.0.1 || ^2.0 || ^3.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "no-dev": true,
+        "sort-packages": true
+    }
+}

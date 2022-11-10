@@ -1,0 +1,8 @@
+.vstags
+vendor
+composer.phar
+composer.lock
+phpunit.phar
+phpunit
+.idea
+bin
