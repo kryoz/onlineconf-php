@@ -2,7 +2,7 @@
     "name": "onlineconf/onlineconf-php",
     "description": "Onlineconf client library for php",
     "minimum-stability": "stable",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Alexander Kubintsev",
