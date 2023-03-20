@@ -93,6 +93,11 @@ final class Client implements ClientInterface
             return;
         }
 
+        if (!function_exists('dba_popen')) {
+            $this->logger->debug('Boot failed: dba php extension is not installed!');
+            return;
+        }
+
         $this->dbHandler = dba_popen($this->moduleFilename, 'r', 'cdb');
 
         if ($this->isDbStateActual()) {
@@ -100,7 +105,6 @@ final class Client implements ClientInterface
             return;
         }
 
-        $this->logger->debug("Reopening cdb");
         dba_close($this->dbHandler);
 
         if ($this->shmHandler) {
