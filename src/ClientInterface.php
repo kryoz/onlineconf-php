@@ -9,7 +9,7 @@ interface ClientInterface
      * @param string|null $default
      * @return null|string|int return null if not found, else - mixed value
      */
-    public function get(string $key, ?string $default = null): int|string|null;
+    public function get(string $key, ?string $default = null);
 
     /**
      * Returns list of key in the branch

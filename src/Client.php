@@ -5,7 +5,6 @@ namespace Onlineconf;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use SysvSharedMemory;
 
 final class Client implements ClientInterface
 {
@@ -13,7 +12,7 @@ final class Client implements ClientInterface
     private bool $isChecked;
     private bool $isCLI;
 
-    private ?SysvSharedMemory $shmHandler;
+    private $shmHandler = null;
 
     private int $shmKey;
     private int $shmVarKey;
@@ -43,7 +42,7 @@ final class Client implements ClientInterface
     /**
      * @inheritdoc
      */
-    public function get(string $key, ?string $default = null): int|string|null
+    public function get(string $key, ?string $default = null)
     {
         if (!$this->dbHandler) {
             $this->logger->warning('No db handler');
@@ -186,7 +185,7 @@ final class Client implements ClientInterface
      * @param string $val
      * @return false|mixed|string
      */
-    private function parseCdbValue(string $val): mixed
+    private function parseCdbValue(string $val)
     {
         if ('s' === $val[0]) {
             return substr($val, 1);

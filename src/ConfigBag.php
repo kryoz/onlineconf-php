@@ -35,7 +35,7 @@ class ConfigBag
      * @param        $default
      * @return int|mixed|string|null
      */
-    public function get(string $name, $default = null): mixed
+    public function get(string $name, $default = null)
     {
         if (!isset($this->cache[$name])) {
             $this->cache[$name] = $this->client->get($this->purifyName($name));
