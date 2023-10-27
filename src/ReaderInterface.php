@@ -1,7 +1,7 @@
 <?php
 namespace Onlineconf;
 
-interface ClientInterface
+interface ReaderInterface 
 {
     /**
      * Gets value or returns default value passed as 2nd argument

@@ -29,3 +29,19 @@ where params in `ConfigBag` constructor are:
 your backend.
 
 It's up to you to handle ConfigBag as single instance in your app. Use DependencyInjection or Singleton as a wrapper.
+
+Example for Symfony at `services.yml`
+````
+    Onlineconf\ReaderInterface:
+        class: Onlineconf\FileReader
+        lazy: true
+        arguments:
+            - '@logger'
+            - '/opt/onlineconf/TREE.cdb'
+
+    Onlineconf\ConfigInterface:
+        class: Onlineconf\ConfigBag
+        lazy: true
+        arguments:
+            - 'myproject'
+````

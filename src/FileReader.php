@@ -6,7 +6,7 @@ namespace Onlineconf;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-final class Client implements ClientInterface
+class FileReader implements ReaderInterface
 {
     private string $moduleFilename;
     private bool $isChecked;
@@ -30,7 +30,6 @@ final class Client implements ClientInterface
     {
         $this->moduleFilename = $moduleFilename;
         $this->logger = $logger ?? new NullLogger;
-
         $this->isCLI = PHP_SAPI === 'cli';
         $this->isChecked = false;
         $this->shmKey = $this->isShmAvailable() ? ftok(__FILE__, 'O') : 1;

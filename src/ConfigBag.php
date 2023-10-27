@@ -3,30 +3,30 @@ declare(strict_types=1);
 
 namespace Onlineconf;
 
-class ConfigBag
+class ConfigBag implements ConfigInterface
 {
     private string $pathPrefix;
     private string $separator;
     private string $ocDelimiter;
-    private ClientInterface $client;
+    private ReaderInterface $client;
     private array $cache = [];
 
     /**
      * @param string               $pathPrefix  onlineconf params namespace/path for params
      * @param string               $appPathDelimiter   customizable path delimiter for your app
      * @param string               $ocDelimiter path delimiter specified in Onlineconf module export (usually "/")
-     * @param ClientInterface|null $client
+     * @param ReaderInterface|null $client
      */
     public function __construct(
         string $pathPrefix = '',
         string $appPathDelimiter = '.',
         string $ocDelimiter = '/',
-        ?ClientInterface $client = null)
+        ?ReaderInterface $client = null)
     {
         $this->pathPrefix = $pathPrefix;
         $this->separator = $appPathDelimiter;
         $this->ocDelimiter = $ocDelimiter;
-        $this->client = $client ?? new Client;
+        $this->client = $client ?? new FileReader();
     }
 
     /**
